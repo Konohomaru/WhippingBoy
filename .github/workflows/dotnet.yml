@@ -14,8 +14,8 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Restore dependencies
-      run: dotnet restore ./Source/ModelTests/ModelTests.dll
+      run: dotnet restore ./Source/ModelTests/ModelTests.csproj
     - name: Build
-      run: dotnet build --no-restore ./Source/ModelTests/ModelTests.dll
+      run: dotnet build --no-restore ./Source/ModelTests/ModelTests.csproj
     - name: Test
       run: dotnet test --no-build --verbosity normal ./Source/ModelTests/ModelTests.dll
