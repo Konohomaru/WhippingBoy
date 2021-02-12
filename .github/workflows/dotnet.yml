@@ -18,6 +18,6 @@ jobs:
     - name: Build
       run: dotnet build --no-restore Source/ModelTests/ModelTests.csproj
     - name: Exploration
-      run: ls
+      run: ls Source/ModelTests/
     - name: Test
       run: dotnet test --verbosity normal Source/ModelTests/bin/Release/netcoreapp3.1/publish/ModelTests.dll
