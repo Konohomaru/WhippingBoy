@@ -12,12 +12,10 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.x
+        dotnet-version: 3.0.1
     - name: Restore dependencies
       run: dotnet restore Source/ModelTests/ModelTests.csproj
     - name: Build
       run: dotnet build --configuration Release Source/ModelTests/ModelTests.csproj
-    - name: Exploration
-      run: ls Source/ModelTests/bin/
     - name: Test
       run: dotnet test --verbosity normal Source/ModelTests/bin/Release/netcoreapp3.1/ModelTests.dll
