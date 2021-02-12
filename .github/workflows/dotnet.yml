@@ -16,6 +16,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore Source/ModelTests/ModelTests.csproj
     - name: Build
-      run: dotnet build --no-restore --configuration Release Source/ModelTests/ModelTests.csproj
+      run: dotnet build --no-restore Source/ModelTests/ModelTests.csproj
     - name: Test
-      run: dotnet test --verbosity normal Source/ModelTests/ModelTests.csproj
+      run: dotnet test --no-build --verbosity normal Source/ModelTests/ModelTests.csproj
