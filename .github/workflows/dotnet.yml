@@ -4,18 +4,17 @@ on: [push, pull_request]
 
 jobs:
   build:
-
+    
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 5.0.x 
-    - name: Restore dependencies
-      run: dotnet restore Source/ModelTests/ModelTests.csproj
-    - name: Build
-      run: dotnet build --no-restore Source/ModelTests/ModelTests.csproj
-    - name: Test
-      run: dotnet test --no-build --verbosity normal Source/ModelTests/ModelTests.csproj
+      - uses: actions/checkout@v2
+
+      - name: Login to Heroku
+        run: docker login -u=_ -p=${{ secrets.HEROKU_API_KEY }} registry.heroku.com
+
+      - name: Build image
+        run: docker build -f WebAPI.dockerfile -t registry.heroku.com/whippingboy/web .
+
+      - name: Push Image
+        run: docker push registry.heroku.com/whippingboy/web

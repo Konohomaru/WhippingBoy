@@ -4,6 +4,7 @@
   "profiles": {
     "WebAPI": {
       "commandName": "Project",
+      "dotnetRunMessages": "true",
       "launchBrowser": true,
       "launchUrl": "check",
       "applicationUrl": "https://localhost:5000",
