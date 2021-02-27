@@ -8,13 +8,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      - name: Login to Heroku
-        run: docker login -u=_ -p=${{ secrets.HEROKU_API_KEY }} registry.heroku.com
-
-      - name: Build image
-        run: docker build -f WebAPI.dockerfile -t registry.heroku.com/whippingboy/web .
-
-      - name: Push Image
-        run: docker push registry.heroku.com/whippingboy/web
+      - name: Build, push and deploy to Heroku
+        uses: jctaveras/heroku-deploy@v2.1.1
+        with:
+          email: ${{ secrets.HEROKU_EMAIL }}
+          api_key: ${{ secrets.HEROKU_API_KEY }}
+          app_name: whippingboy
+          dockerfile_path: ''
