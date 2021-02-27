@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@latest
 
       - name: Build, push and deploy to Heroku
         uses: jctaveras/heroku-deploy@v2.1.1
